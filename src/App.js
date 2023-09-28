@@ -1,6 +1,8 @@
 import "./App.css";
+import Container from "./components/container/Container";
 import { FriendsList } from "./components/friends/friendsList/FriendsList";
 import Profile from "./components/profile/profile/Profile";
+import Galery from "./pages/Galery";
 
 function App() {
   const array = [];
@@ -9,7 +11,7 @@ function App() {
 
   return (
     // React.Fragment
-    <>
+    <Container>
       <div>
         <h1>Hello</h1>
 
@@ -19,7 +21,10 @@ function App() {
       <FriendsList />
 
       {array.length ? <Profile /> : null}
-    </>
+      {/* && || & ?: */}
+      <Galery />
+      <button onClick={console.log("b")}>s</button>
+    </Container>
   );
 }
 
