@@ -1,30 +1,29 @@
 import "./App.css";
-import Container from "./components/container/Container";
-import { FriendsList } from "./components/friends/friendsList/FriendsList";
-import Profile from "./components/profile/profile/Profile";
-import Galery from "./pages/Galery";
+import ReceiptsList from "./components/receipts/receiptsList/ReceiptsList";
+import recipies from "./data/recipies.json";
 
 function App() {
-  const array = [];
+  const array = [1, 2, 3, 4, 5];
   const message = "";
   const title = "";
 
   return (
+    <ReceiptsList data={recipies} />
     // React.Fragment
-    <Container>
-      <div>
-        <h1>Hello</h1>
+    // <Container data={array}>
+    //   <div>
+    //     <h1>Hello</h1>
 
-        {title && <p> {title}</p>}
-        {message.length > 0 && <p>кількість символів {message.length}</p>}
-      </div>
-      <FriendsList />
+    //     {title && <p> {title}</p>}
+    //     {message.length > 0 && <p>кількість символів {message.length}</p>}
+    //   </div>
+    //   <FriendsList />
 
-      {array.length ? <Profile /> : null}
-      {/* && || & ?: */}
-      <Galery />
-      <button onClick={console.log("b")}>s</button>
-    </Container>
+    //   {array.length ? <Profile /> : null}
+    //   && || & ?:
+    //   <Galery />
+    //   <button onClick={console.log("b")}>s</button>
+    // </Container>
   );
 }
 

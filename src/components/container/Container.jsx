@@ -1,4 +1,5 @@
-const Container = ({ children }) => {
+const Container = ({ data, children }) => {
+  console.log(data);
   return <div>{children}</div>;
 };
 
