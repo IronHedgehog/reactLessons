@@ -1,6 +1,12 @@
 import "./App.css";
-import ReceiptsList from "./components/receipts/receiptsList/ReceiptsList";
-import recipies from "./data/recipies.json";
+import Alert from "./components/alert/Alert";
+
+const alertStyles = {
+  padding: 20,
+  margin: "12em 20rem",
+  color: "yellow",
+  backgroundColor: "blue",
+};
 
 function App() {
   const array = [1, 2, 3, 4, 5];
@@ -8,7 +14,26 @@ function App() {
   const title = "";
 
   return (
-    <ReceiptsList data={recipies} />
+    <>
+      {/* <ReceiptsList data={recipies} /> */}
+      <Alert type="ok">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam,
+        doloribus!
+      </Alert>
+      <Alert type="warning">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam,
+        doloribus!
+      </Alert>
+      <Alert type="error">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam,
+        doloribus!
+      </Alert>
+
+      <Alert type="unsupported">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam,
+        doloribus!
+      </Alert>
+    </>
     // React.Fragment
     // <Container data={array}>
     //   <div>
