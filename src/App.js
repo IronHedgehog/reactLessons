@@ -16,15 +16,15 @@ function App() {
   return (
     <>
       {/* <ReceiptsList data={recipies} /> */}
-      <Alert type="ok">
+      <Alert type="ok" border>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam,
         doloribus!
       </Alert>
-      <Alert type="warning">
+      <Alert type="warning" box>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam,
         doloribus!
       </Alert>
-      <Alert type="error">
+      <Alert type="error" border>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam,
         doloribus!
       </Alert>

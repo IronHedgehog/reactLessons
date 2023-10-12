@@ -10,7 +10,8 @@
 }
 
 .warning {
-  composes: alert;
+  @extend .alert, .rrr;
+
   background-color: orange;
 }
 
@@ -26,4 +27,14 @@
   margin: 12em 20rem;
   color: yellow;
   background-color: green;
+}
+
+.border {
+  border: 5px solid red;
+}
+
+.shadow {
+  -webkit-box-shadow: 50px -58px 38px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 50px -58px 38px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 50px -58px 38px 0px rgba(0, 0, 0, 0.2);
 }
