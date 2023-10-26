@@ -6,7 +6,7 @@ export default class App extends Component {
   state = {
     phones: [
       { id: 1, name: "Artur", phone: "735-07-97" },
-      { id: 2, name: "shos-nebyd", phone: "735-06-77" },
+      { id: 2, name: "Shos-nebyd", phone: "735-06-77" },
       { id: 3, name: "Hto-nebyd", phone: "735-09-57" },
       { id: 4, name: "Bird", phone: "735-08-17" },
     ],
