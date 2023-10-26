@@ -12,6 +12,8 @@
 
 // const newArr = [...phones, newPhone];
 
+// const value = e.target.value ;
+
 // console.log(newArr);
 
 // const phoneDelete = newArr.filter((item) => item.id !== 7);
