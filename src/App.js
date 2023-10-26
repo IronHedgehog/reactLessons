@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Form from "./components/form/Form";
 import Numberlist from "./components/numberlist/Numberlist";
 
 export default class App extends Component {
@@ -15,6 +16,7 @@ export default class App extends Component {
     const { phones } = this.state;
     return (
       <>
+        <Form />
         <Numberlist data={phones} />
       </>
     );
