@@ -22,6 +22,8 @@ class Form extends Component {
       name: "",
       phone: "",
     });
+
+    // Form.reset();
   };
 
   render() {

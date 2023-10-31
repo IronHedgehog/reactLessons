@@ -31,16 +31,33 @@ export default class App extends Component {
   plusFilter = (e) => {
     const { value } = e.target;
     this.setState({ filter: value });
+    // ПРЯМЕ ОНОВЛЕННЯ СТЕЙТУ === ТАК РОБИТИ НІКОЛИ НЕ МОЖНА
+    // this.state.filter = "PETRO";
+  };
+
+  filterByName = () => {
+    const { phones, filter } = this.state;
+    const filerPhones = phones.filter((phone) => {
+      return phone.name.toLowerCase().includes(filter.toLowerCase());
+    });
+    return filerPhones;
+  };
+
+  deletePhone = (id) => {
+    this.setState((prev) => {
+      prev.phones.filter((item) => item.id !== id);
+    });
   };
 
   render() {
     const { phones } = this.state;
-    const { plusContact, plusFilter } = this;
+    const { plusContact, plusFilter, filterByName, deletePhone } = this;
+    const filterElements = filterByName();
     return (
       <>
         <Form plusContact={plusContact} />
         <Filter plusFilter={plusFilter} />
-        <Numberlist data={phones} />
+        <Numberlist data={filterElements} deletePhone={deletePhone} />
       </>
     );
   }
