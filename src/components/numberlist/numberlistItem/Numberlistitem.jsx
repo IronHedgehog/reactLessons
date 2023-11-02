@@ -6,7 +6,7 @@ const Numberlistitem = ({ name, number, deletePhone, id }) => {
     <li>
       <p>{name}</p>
       <p>{number}</p>
-      <button type="button" onClick={(e) => console.log(e)}>
+      <button type="button" onClick={(e) => deletePhone(id)}>
         Видалити
       </button>
     </li>

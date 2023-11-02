@@ -44,13 +44,23 @@ export default class App extends Component {
   };
 
   deletePhone = (id) => {
-    this.setState((prev) => {
-      prev.phones.filter((item) => item.id !== id);
-    });
+    // this.setState((prev) => ({
+    //  phones: prev.phones.filter((item) => item.id !== id);
+    // }));
+    this.setState((prevState) => ({
+      phones: prevState.phones.filter((item) => item.id !== id),
+    }));
   };
 
   render() {
-    const { phones } = this.state;
+    // const phones = [
+    //   { id: 1, name: "Artur", phone: "735-07-97" },
+    //   { id: 2, name: "Shos-nebyd", phone: "735-06-77" },
+    //   { id: 3, name: "Hto-nebyd", phone: "735-09-57" },
+    //   { id: 4, name: "Bird", phone: "735-08-17" },
+    // ];
+    // PROPS READ ONLY
+    // const { phones } = this.state;
     const { plusContact, plusFilter, filterByName, deletePhone } = this;
     const filterElements = filterByName();
     return (
