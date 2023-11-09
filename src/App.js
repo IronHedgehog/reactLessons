@@ -1,29 +1,20 @@
-import React, { Component } from "react";
+import { Component } from "react";
+import Checkbox from "./components/Checkbox";
 // ПРИКЛАД НЕКОНТРОЛЬОВАНОЇ ФОРМИ
 export default class App extends Component {
-  onSubmitForm = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const login = form.elements.login.value;
-    const password = form.elements.password.value;
-    this.props.onSubmit({ login, password });
-    form.reset();
+  state = {
+    filter: "",
   };
+
+  filterChange = (values) => {
+    this.setState({ filter: values });
+  };
+
   render() {
-    const { onSubmitForm } = this;
-    return (
-      <form onSubmit={onSubmitForm}>
-        <label>
-          E-mail
-          <input type="text" name="login" placeholder="login" />
-        </label>
-        <label>
-          password
-          <input type="password" name="password" placeholder="password" />
-        </label>
-        <button type="submit">Login</button>
-      </form>
-    );
+    //
+    return <Checkbox />;
+    //  <Uncontrol onSubmit={(values) => console.log(values)} />;
+    // <Control filterChange={this.filterChange} />;
   }
 }
 
