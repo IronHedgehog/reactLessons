@@ -14,6 +14,26 @@ export default class App extends Component {
     filter: "",
   };
 
+  componentDidMount() {
+    // console.log("Компонент зарендерився");
+    const storageData = localStorage.getItem("phones");
+    console.log(storageData);
+    const parsedStorageData = JSON.parse(storageData);
+    console.log(parsedStorageData);
+
+    if (parsedStorageData) {
+      this.setState({
+        phones: parsedStorageData,
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.phones !== prevState.phones) {
+      localStorage.setItem("phones", JSON.stringify(this.state.phones));
+    }
+  }
+
   plusContact = (contact) => {
     if (
       this.state.phones.find(
@@ -65,6 +85,7 @@ export default class App extends Component {
     const filterElements = filterByName();
     return (
       <>
+        <h1>ПРИВІТ!</h1>
         <Form plusContact={plusContact} />
         <Filter plusFilter={plusFilter} />
         <Numberlist data={filterElements} deletePhone={deletePhone} />
