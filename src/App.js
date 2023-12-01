@@ -4,6 +4,10 @@ import Form from "./components/form/Form";
 import Numberlist from "./components/numberlist/Numberlist";
 
 export default class App extends Component {
+  // constructor() {
+  //   super(props);
+
+  // }
   state = {
     phones: [
       { id: 1, name: "Artur", phone: "735-07-97" },
@@ -12,9 +16,11 @@ export default class App extends Component {
       { id: 4, name: "Bird", phone: "735-08-17" },
     ],
     filter: "",
+    error: true,
   };
 
   componentDidMount() {
+    // HTTP req, event,timer
     // console.log("Компонент зарендерився");
     const storageData = localStorage.getItem("phones");
     console.log(storageData);
@@ -28,10 +34,24 @@ export default class App extends Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    // Спрацьовує перед методом рендер і вказує чи має ререндиритись компонент якщо повертається false то ререндер не відбувається,якщо true то відбудеться
+    if (nextState.phones === this.state.phones) {
+      return false;
+    }
+    return true;
+  }
+
   componentDidUpdate(prevProps, prevState) {
+    // Обовʼязково записувати умову,щоб не зациклити нашу дію.
     if (this.state.phones !== prevState.phones) {
       localStorage.setItem("phones", JSON.stringify(this.state.phones));
     }
+  }
+
+  componentDidCatch() {
+    // слугує для обробки помилок та їх опрацювання
+    this.setState({ error: true });
   }
 
   plusContact = (contact) => {
@@ -73,6 +93,9 @@ export default class App extends Component {
   };
 
   render() {
+    // if (this.state.error === true) {
+    //   <h1>Вибачте, сайт впав</h1>;
+    // }
     // const phones = [
     //   { id: 1, name: "Artur", phone: "735-07-97" },
     //   { id: 2, name: "Shos-nebyd", phone: "735-06-77" },
