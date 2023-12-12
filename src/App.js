@@ -21,7 +21,6 @@ class App extends Component {
 
   render() {
     const { news, isLoading } = this.state;
-    console.log(isLoading);
     return <>{isLoading === true ? "LOADER" : <NewsList data={news} />}</>;
   }
 }
