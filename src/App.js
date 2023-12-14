@@ -1,6 +1,7 @@
-import axios from "axios";
 import { Component } from "react";
 import { ColorRing } from "react-loader-spinner";
+
+import API from "./API/agolia/req";
 import Error from "./components/Error/Error";
 import NewsList from "./components/newsList/NewsList";
 
@@ -21,9 +22,7 @@ class App extends Component {
     try {
       this.setState({ isLoading: true });
       // Виконуємо асиннхронну операцію (запит на сервер тощо)
-      const fetch = await axios.get("https://hn.agolia.com/api/v1/search");
-      // Обробляємо дані приводимо їх до нормального виду
-      const data = fetch.data.hits;
+      const data = await API.fetchNewsWithQuery("news");
       // Зберігаєм данні для подальшої роботи і скидаєм лоадер isLoading: false
       this.setState({ news: data, isLoading: false });
     } catch (error) {

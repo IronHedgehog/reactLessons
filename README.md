@@ -23,7 +23,9 @@ axios = це річ яка дозволяє нам зручніше працюв
 ---ДЗ
 
 IMG Finder ДЗ
-https://mhnpd.github.io/react-loader-spinner/docs/intro/
+https://github.com/goitacademy/react-homework/blob/master/homework-03/image-finder/README.ua.md
 
 <!-- БУЛЕВА ЛОГІКА -->
 <!-- ЛІниві оператори -->
+<!-- snapshot  -->
+<!-- error(метод життевого циклу)  зробим кастомну помилку-->
