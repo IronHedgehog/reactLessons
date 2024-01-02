@@ -1,61 +1,24 @@
-import { Component } from "react";
-import { ColorRing } from "react-loader-spinner";
+import React from "react";
+import HookCounter from "./components/HookCounter";
 
-import API from "./API/agolia/req";
-import Error from "./components/Error/Error";
-import NewsList from "./components/newsList/NewsList";
-
-class App extends Component {
-  state = {
-    news: [],
-    isLoading: false,
-    // errorCode:
-    // errorMessage:
-    error: null,
-  };
-
-  async componentDidMount() {
-    //   Перед асинхронною операцією встановлюємо isLoading true
-    // try = cпробувати зробити запит
-    // catch = якщо не вийшло впіймаї помилку
-    // finaly = Код який ми напишем в finaly виконається в будь якому разі.
-    try {
-      this.setState({ isLoading: true });
-      // Виконуємо асиннхронну операцію (запит на сервер тощо)
-      const data = await API.fetchNewsWithQuery("news");
-      // Зберігаєм данні для подальшої роботи і скидаєм лоадер isLoading: false
-      this.setState({ news: data, isLoading: false });
-    } catch (error) {
-      if (error.code === "ERR_NETWORK") {
-        this.setState({ error: "Сервер ліг,коли встане наберу" });
-      }
-      // console.log(error.code + " " + error.message);
-    } finally {
-      this.setState({ isLoading: false });
-    }
-  }
-
-  render() {
-    const { news, isLoading, error } = this.state;
-    return (
-      <>
-        {error && <Error message={error} />}
-        {isLoading === true ? (
-          <ColorRing
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="blocks-loading"
-            wrapperStyle={{}}
-            wrapperClass="blocks-wrapper"
-            colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
-          />
-        ) : (
-          <NewsList data={news} />
-        )}
-      </>
-    );
-  }
-}
+const App = () => {
+  return (
+    <>
+      <h1>План на заняття</h1>
+      <ol>
+        <li>Шо за хуки?</li>
+        <li>
+          <p>Хук дозволяє підчипити якийсь стан компонента</p>
+        </li>
+        <li>useState</li>
+        <li>useEffect unmount</li>
+        <li>customHooks</li>
+        <li>useMemo</li>
+        <li>useCallback</li>
+      </ol>
+      <HookCounter />
+    </>
+  );
+};
 
 export default App;
