@@ -1,5 +1,6 @@
 import React from "react";
-import HookCounter from "./components/HookCounter";
+import ComponentB from "./components/ComponentB";
+import ComponentC from "./components/ComponentC";
 
 const App = () => {
   return (
@@ -11,12 +12,18 @@ const App = () => {
           <p>Хук дозволяє підчипити якийсь стан компонента</p>
         </li>
         <li>useState</li>
-        <li>useEffect unmount</li>
-        <li>customHooks</li>
+        <li>
+          unmount useEffect окреме використаня useEffect для кожного життевого
+          циклу
+        </li>
+        <li>customHooks = Власні хуки</li>
         <li>useMemo</li>
         <li>useCallback</li>
       </ol>
-      <HookCounter />
+      {/* <HookCounter /> */}
+      {/* <NewComponent /> */}
+      <ComponentB />
+      <ComponentC />
     </>
   );
 };
