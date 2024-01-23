@@ -1,31 +1,20 @@
-import React from "react";
-import ComponentB from "./components/ComponentB";
-import ComponentC from "./components/ComponentC";
+import { createContext, useContext } from "react";
+import CongradulationsMessage from "./components/congradulationsMessage/CongradulationsMessage";
+import UserList from "./components/userList/UserList";
+import { useMyContext } from "./hooks/myContext";
+import { user } from "./index";
 
-const App = () => {
+function App() {
+  const appContext = createContext("Test");
+  const contextValue = useContext(user);
+  const { nickname } = useMyContext();
   return (
     <>
-      <h1>План на заняття</h1>
-      <ol>
-        <li>Шо за хуки?</li>
-        <li>
-          <p>Хук дозволяє підчипити якийсь стан компонента</p>
-        </li>
-        <li>useState</li>
-        <li>
-          unmount useEffect окреме використаня useEffect для кожного життевого
-          циклу
-        </li>
-        <li>customHooks = Власні хуки</li>
-        <li>useMemo</li>
-        <li>useCallback</li>
-      </ol>
-      {/* <HookCounter /> */}
-      {/* <NewComponent /> */}
-      <ComponentB />
-      <ComponentC />
+      <p>{nickname}</p>
+      <UserList />
+      <CongradulationsMessage />
     </>
   );
-};
+}
 
 export default App;
