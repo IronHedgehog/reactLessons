@@ -6,7 +6,7 @@ const UserList = () => {
   console.log(nickname);
   return (
     <ul>
-      <li>{nickname}</li>
+      <li>asdas</li>
     </ul>
   );
 };
