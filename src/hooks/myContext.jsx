@@ -1,8 +1,8 @@
 import { createContext, useContext, useState } from "react";
 
-export const MyContext = createContext();
+export const userContext = createContext();
 
-export const useMyContext = () => useContext(MyContext);
+export const useUserContext = () => useContext(userContext);
 
 export const UserProvider = ({ children }) => {
   // false = false,null,undefined,NaN,"",0
@@ -19,8 +19,8 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <MyContext.Provider value={{ isLoggedIn, nickName, login, logOut }}>
+    <userContext.Provider value={{ isLoggedIn, nickName, login, logOut }}>
       {children}
-    </MyContext.Provider>
+    </userContext.Provider>
   );
 };

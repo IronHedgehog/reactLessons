@@ -1,7 +1,7 @@
 import React from "react";
-import { useMyContext } from "../../hooks/myContext";
+import { useUserContext } from "../../hooks/myContext";
 const CongradulationsMessage = () => {
-  const { nickname } = useMyContext();
+  const { nickname } = useUserContext();
   return <div>{nickname}</div>;
 };
 

@@ -1,13 +1,13 @@
 import React from "react";
-import { useMyContext } from "../../hooks/myContext";
+import { useUserContext } from "../../hooks/myContext";
 
 const UserList = () => {
-  const { nickname } = useMyContext();
-  console.log(nickname);
+  const { nickName } = useUserContext();
   return (
-    <ul>
-      <li>asdas</li>
-    </ul>
+    <div>
+      {nickName && <p> Привіт,{}</p>}
+      {nickName ? <button>LogOut</button> : <button>LogIn</button>}
+    </div>
   );
 };
 
