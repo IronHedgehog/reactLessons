@@ -1,11 +1,11 @@
 import { createContext, useContext, useEffect, useRef } from "react";
-import Counter from "./Counter";
-import CongradulationsMessage from "./components/congradulationsMessage/CongradulationsMessage";
-import UserList from "./components/userList/UserList";
+import Buttons from "./components/button/Buttons";
+import Player from "./components/player/Player";
 import { useUserContext } from "./hooks/myContext";
 import { user } from "./index";
 
 function App() {
+  const buttonRef = useRef();
   const appContext = createContext("Test");
   const contextValue = useContext(user);
   const { nickname } = useUserContext();
@@ -19,6 +19,7 @@ function App() {
     // ефект відпрацьовує після монутвання усіх компонентів
     // Будемо завжди отримувати посилання на елемент
     // console.log(btnRef.current);
+    buttonRef.current.focus();
   }, []);
 
   const click = (e) => {
@@ -27,14 +28,15 @@ function App() {
 
   return (
     <>
-      <p>{nickname}</p>
+      <Buttons ref={buttonRef}>Forward ref</Buttons>
 
+      <p>{nickname}</p>
       <button onClick={click} ref={btnRef}>
         Button with ref
       </button>
-      <Counter />
-      <UserList />
-      <CongradulationsMessage />
+      <Player source={"http://media.w3.org/2010/05/sintel/trailer.mp4"} />
+      {/* <UserList/>
+      <CongradulationsMessage /> */}
     </>
   );
 }
