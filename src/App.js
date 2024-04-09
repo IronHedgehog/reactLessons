@@ -1,38 +1,25 @@
-import { useMemo, useState } from "react";
+import logo from './logo.svg';
+import './App.css';
 
-const App = ({ someProp }) => {
-  // Причини ререндеру компоненту(ОСНОВНІ)
-  // 1)Якщо змінюються пропси
-  // 2)Якщо змінюється стейт
-
-  // Список планет
-  const [planets, setPlanets] = useState(["Earth", "Mars", "Jupiter", "Venus"]);
-  // Пошуковий запит користувача
-  const [query, setQuery] = useState("V");
-  const [click, setClick] = useState(0);
-  // useMemo() - повертає значення яке запамʼятав
-  // useMemo - це хук для оптимізації та запамʼятовування якихось великих данних
-  // Завжди масив повертає
-  // useMemo() -  для великих обсягів інформації
-
-  const filterPlanet = useMemo(
-    () => planets.filter((planet) => planet.includes(query)),
-    [planets, query]
-  );
-
-  // const memoryTest = useMemo(() => first, [second]);
-
-  console.log(filterPlanet);
+function App() {
   return (
-    <>
-      <button onClick={() => setClick(click + 1)}>{click}</button>
-      <div>
-        {filterPlanet.map((planet) => (
-          <div key={planet}>{planet}</div>
-        ))}
-      </div>
-    </>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
-};
+}
 
 export default App;
