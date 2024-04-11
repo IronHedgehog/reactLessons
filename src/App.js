@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
+import { NotFound } from "./pages/NotFound";
+import { Partfolio } from "./pages/Partfolio";
+import { Studio } from "./pages/Studio";
 
-function App() {
+const App = () => {
+  const [mainPage, setMainPage] = useState(true);
+
+  // Відображення сторінок
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <button onClick={(e) => setMainPage(!mainPage)}>
+        Перейти доо мого партфоліо
+      </button>
+
+      {/*Routes - компонент який буде вміщувати в себе всі можливі розгалудженні(маршрути), Обовʼязковий навіть якщо у вас один маршрут  */}
+      <Routes>
+        {/* path="/"  = стартова сторінка */}
+        {/* element={<Studio />} - Компонент який буде відображуватись якщо користувач потрапить на данний роут  */}
+        {/* path="*" - БУДЬ що  Що не прописано в роутингу */}
+        {/* :id - означає динамічний параметр,іменування може бути довільним має будь описовим та зрозумілим */}
+        <Route path="/" element={<Studio />} />
+        <Route path="/partfolio" element={<Partfolio />} />
+        <Route path="/partfolio/:id" element={<Partfolio />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;
