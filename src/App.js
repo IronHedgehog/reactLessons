@@ -1,34 +1,22 @@
-import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Header from "./components/Header";
-import { NotFound } from "./pages/NotFound";
-import { Partfolio } from "./pages/Partfolio";
-import { Studio } from "./pages/Studio";
+import Header from "./components/Header/Header";
+import MoviesDetails from "./pages/MoviesDetails";
+import NotFound from "./pages/NotFound";
+import PopularFilms from "./pages/PopularFilms";
+import Search from "./pages/Search";
 
-const App = () => {
-  const [mainPage, setMainPage] = useState(true);
-
-  // Відображення сторінок
+function App() {
   return (
     <>
       <Header />
-      <button onClick={(e) => setMainPage(!mainPage)}>
-        Перейти доо мого партфоліо
-      </button>
-
-      {/*Routes - компонент який буде вміщувати в себе всі можливі розгалудженні(маршрути), Обовʼязковий навіть якщо у вас один маршрут  */}
       <Routes>
-        {/* path="/"  = стартова сторінка */}
-        {/* element={<Studio />} - Компонент який буде відображуватись якщо користувач потрапить на данний роут  */}
-        {/* path="*" - БУДЬ що  Що не прописано в роутингу */}
-        {/* :id - означає динамічний параметр,іменування може бути довільним має будь описовим та зрозумілим */}
-        <Route path="/" element={<Studio />} />
-        <Route path="/partfolio" element={<Partfolio />} />
-        <Route path="/partfolio/:id" element={<Partfolio />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/" element={<PopularFilms />} />
+        <Route path="/movies/:movieId" element={<MoviesDetails />}></Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
-};
+}
 
 export default App;
