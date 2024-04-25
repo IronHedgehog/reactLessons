@@ -5,11 +5,9 @@ const fetchTrendingFilms = async (keyWord = "Barbie") => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/search/movie?api_key=5456eae918aecb3e2e60ac718603b47e&query=${keyWord}&page=1`
     );
-    console.log(keyWord);
     if (!data.results.length) {
       throw new Error("Not found");
     }
-    console.log(data.results);
     return data.results;
   } catch (error) {
     throw error;
@@ -38,6 +36,21 @@ export const fetchDetailsById = async (id = "1011985") => {
     return data;
   } catch (error) {
     throw error;
+  }
+};
+
+export const fetchMoviesReviews = async (id) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&page=1&api_key=5456eae918aecb3e2e60ac718603b47e`
+    );
+    console.log(data);
+    if (!data) {
+      throw new Error("Not found");
+    }
+    return data.results;
+  } catch (error) {
+    console.log(error);
   }
 };
 

@@ -1,15 +1,13 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { fetchPopularFims } from "../API/FilmsApi";
 
 const PopularFilms = () => {
-  const location = useLocation();
   const [movies, setMovies] = useState([]);
-
+  const location = useLocation();
   useEffect(() => {
     fetchPopularFims().then(setMovies);
   }, []);
-
   return (
     <>
       <ul>
@@ -17,7 +15,7 @@ const PopularFilms = () => {
           <li key={movie.id}>
             <Link
               to={{
-                pathname: "/movies/" + movie.id,
+                pathname: `/movies/${movie.id}`,
                 state: {
                   from: location,
                 },
@@ -30,8 +28,8 @@ const PopularFilms = () => {
       </ul>
 
       {/* <Routes>
-        <Route path="/movies/:movieId" element={<MoviesDetails />}></Route>
-      </Routes> */}
+      <Route path="/movies/:movieId" element={<MoviesDetails/>}></Route>
+    </Routes> */}
     </>
   );
 };
