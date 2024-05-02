@@ -4,15 +4,16 @@ import { devToolsEnhancer } from "@redux-devtools/extension";
 
 const initialState = {
   tasks: [
-    { id: 1, text: "do something", completed: false },
-    { id: 2, text: "do something", completed: false },
+    { id: 1, text: "do something", completed: true },
+    { id: 2, text: "do something", completed: true },
     { id: 3, text: "do something", completed: false },
-    { id: 4, text: "do something", completed: false },
+    { id: 4, text: "do something", completed: true },
     { id: 5, text: "do something", completed: false },
-    { id: 6, text: "do something", completed: false },
+    { id: 6, text: "do something", completed: true },
   ],
+
   filters: {
-    status: "All",
+    status: "active",
   },
 };
 
