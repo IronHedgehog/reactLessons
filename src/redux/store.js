@@ -1,25 +1,8 @@
 import { createStore } from "redux";
 
 import { devToolsEnhancer } from "@redux-devtools/extension";
+import { rootReducer } from "./reducer";
 
-const initialState = {
-  tasks: [
-    { id: 1, text: "do something", completed: true },
-    { id: 2, text: "do something", completed: true },
-    { id: 3, text: "do something", completed: false },
-    { id: 4, text: "do something", completed: true },
-    { id: 5, text: "do something", completed: false },
-    { id: 6, text: "do something", completed: true },
-  ],
-
-  filters: {
-    status: "active",
-  },
-};
-
-const rootReducer = (state = initialState, action) => {
-  return state;
-};
 // const enhancer = devToolsEnhancer(); - поєднання девтулзів редаксу з додатком
 const enhancer = devToolsEnhancer();
 // Створення загального стору в який ми передали загальний стейт та підключення девтулзів
