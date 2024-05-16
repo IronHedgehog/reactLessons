@@ -1,4 +1,5 @@
 // Приймає будь-які дані окрім функції класи.
+import { createAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 const action = {
   //type -  обовʼязковий
@@ -31,33 +32,47 @@ const action = {
 //   payload: "FilterValue",
 // };
 
-export const addTask = (text) => {
+export const addTask = createAction("tasks/addTask", function prepare(text) {
   return {
-    type: "tasks/addTask",
     payload: {
-      id: uuidv4(),
       text,
+      id: uuidv4(),
       completed: false,
     },
   };
-};
+});
 
-export const deleteTask = (taskId) => {
-  return {
-    type: "tasks/deleteTask",
-    payload: taskId,
-  };
-};
+export const deleteTask = createAction("tasks/deleteTask");
+export const toggleCompleted = createAction("tasks/toggleCompleted");
+export const statusFilter = createAction("tasks/statusFilter");
 
-export const toggleCompleted = (taskId) => {
-  return {
-    type: "tasks/toggleCompleted",
-    payload: taskId,
-  };
-};
-export const statusFilter = (filterValue) => {
-  return {
-    type: "tasks/statusFilter",
-    payload: filterValue,
-  };
-};
+// export const addTask = (text) => {
+//   return {
+//     type: "tasks/addTask",
+//     payload: {
+//       id: uuidv4(),
+//       text,
+//       completed: false,
+//     },
+//   };
+// };
+
+// export const deleteTask = (taskId) => {
+//   return {
+//     type: "tasks/deleteTask",
+//     payload: taskId,
+//   };
+// };
+
+// export const toggleCompleted = (taskId) => {
+//   return {
+//     type: "tasks/toggleCompleted",
+//     payload: taskId,
+//   };
+// };
+// export const statusFilter = (filterValue) => {
+//   return {
+//     type: "tasks/statusFilter",
+//     payload: filterValue,
+//   };
+// };

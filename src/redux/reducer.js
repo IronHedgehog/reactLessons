@@ -1,22 +1,10 @@
 // reducer
 
-const initialState = {
-  tasks: [
-    { id: 1, text: "do something", completed: true },
-    { id: 2, text: "do something", completed: true },
-    { id: 3, text: "do something", completed: false },
-    { id: 4, text: "do something", completed: true },
-    { id: 5, text: "do something", completed: false },
-    { id: 6, text: "do something", completed: true },
-  ],
-  filters: {
-    status: "active",
-  },
+const taskInitState = {
+  tasks: [{ id: 1, text: "asdasd", completed: false }],
 };
-
-export const rootReducer = (state = initialState, action) => {
-  // Абсолютно кожен редюсер отримує всі екшени.
-  // якщо цей редюсер не має відпрацьовувати екшен ви не маєте заносити його в switch і повертати у полі default стандартний стан який був до цього
+export const taskReducer = (state = taskInitState, action) => {
+  console.log(state);
   switch (action.type) {
     case "tasks/addTask": {
       return {
@@ -47,4 +35,12 @@ export const rootReducer = (state = initialState, action) => {
     default:
       return state;
   }
+};
+
+const filterInitState = {
+  status: "all",
+};
+
+export const filterReducer = (state = filterInitState, action) => {
+  return filterInitState;
 };
