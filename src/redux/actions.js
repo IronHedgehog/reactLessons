@@ -42,10 +42,6 @@ export const addTask = createAction("tasks/addTask", function prepare(text) {
   };
 });
 
-export const deleteTask = createAction("tasks/deleteTask");
-export const toggleCompleted = createAction("tasks/toggleCompleted");
-export const statusFilter = createAction("tasks/statusFilter");
-
 // export const addTask = (text) => {
 //   return {
 //     type: "tasks/addTask",
@@ -57,12 +53,14 @@ export const statusFilter = createAction("tasks/statusFilter");
 //   };
 // };
 
+export const deleteTask = createAction("tasks/deleteTask");
 // export const deleteTask = (taskId) => {
 //   return {
 //     type: "tasks/deleteTask",
 //     payload: taskId,
 //   };
 // };
+export const toggleCompleted = createAction("tasks/toggleCompleted");
 
 // export const toggleCompleted = (taskId) => {
 //   return {
@@ -70,6 +68,8 @@ export const statusFilter = createAction("tasks/statusFilter");
 //     payload: taskId,
 //   };
 // };
+export const statusFilter = createAction("tasks/statusFilter");
+
 // export const statusFilter = (filterValue) => {
 //   return {
 //     type: "tasks/statusFilter",

@@ -4,9 +4,9 @@ import css from "./TaskCounter.module.css";
 
 export const TaskCounter = () => {
   // const tasks = useSelector((state) => state.tasks);
-  const tasks = useSelector((state) => getTasks(state)).tasks;
+  const tasks = useSelector((state) => getTasks(state));
 
-  // console.log(tasks.tasks);
+  console.log(tasks);
   const counter = tasks.reduce(
     (acc, task) => {
       if (task.completed) {

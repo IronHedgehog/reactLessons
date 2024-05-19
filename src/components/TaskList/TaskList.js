@@ -18,7 +18,7 @@ const getNeddedTasks = (tasks, filter) => {
 
 export const TaskList = () => {
   // useSelector - дозволяє підписатись на стейт
-  const tasks = useSelector((state) => state.tasks).tasks;
+  const tasks = useSelector((state) => state.tasks);
 
   const filter = useSelector((state) => state.filter.status);
 
