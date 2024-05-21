@@ -23,7 +23,6 @@ export const TaskList = () => {
   const filter = useSelector((state) => state.filter.status);
 
   const neddedTasks = getNeddedTasks(tasks, filter);
-  console.log(neddedTasks);
   return (
     <ul className={css.list}>
       {neddedTasks.map((task) => (

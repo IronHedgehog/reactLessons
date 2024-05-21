@@ -1,6 +1,5 @@
 // Приймає будь-які дані окрім функції класи.
 import { createAction } from "@reduxjs/toolkit";
-import { v4 as uuidv4 } from "uuid";
 const action = {
   //type -  обовʼязковий
   type: "Action type",
@@ -32,15 +31,15 @@ const action = {
 //   payload: "FilterValue",
 // };
 
-export const addTask = createAction("tasks/addTask", function prepare(text) {
-  return {
-    payload: {
-      text,
-      id: uuidv4(),
-      completed: false,
-    },
-  };
-});
+// export const addTask = createAction("tasks/addTask", function prepare(text) {
+//   return {
+//     payload: {
+//       text,
+//       id: uuidv4(),
+//       completed: false,
+//     },
+//   };
+// });
 
 // export const addTask = (text) => {
 //   return {
@@ -53,14 +52,14 @@ export const addTask = createAction("tasks/addTask", function prepare(text) {
 //   };
 // };
 
-export const deleteTask = createAction("tasks/deleteTask");
+// export const deleteTask = createAction("tasks/deleteTask");
 // export const deleteTask = (taskId) => {
 //   return {
 //     type: "tasks/deleteTask",
 //     payload: taskId,
 //   };
 // };
-export const toggleCompleted = createAction("tasks/toggleCompleted");
+// export const toggleCompleted = createAction("tasks/toggleCompleted");
 
 // export const toggleCompleted = (taskId) => {
 //   return {
