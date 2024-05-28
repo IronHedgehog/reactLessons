@@ -1,12 +1,41 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { filterReducer } from "./filterSlice";
-import { taskReducer } from "./slice";
-import { useDispatch } from "react-redux";
-useDispatch;
-// Створення загального стору в який ми передали загальний стейт та підключення девтулзів
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import logger from 'redux-logger';
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+  persistReducer,
+  persistStore,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import counterReducer from './counter/counter-reducer';
+import todosReducer from './todos/todos-reducer';
+
+const middleware = [
+  ...getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
+  logger,
+];
+
+const todosPersistConfig = {
+  key: 'todos',
+  storage,
+  blacklist: ['filter'],
+};
+
 export const store = configureStore({
   reducer: {
-    tasks: taskReducer,
-    filter: filterReducer,
+    todos: persistReducer(todosPersistConfig, todosReducer),
+    counter: counterReducer,
   },
+  middleware,
+  devTools: process.env.NODE_ENV === 'development',
 });
+
+export const persistor = persistStore(store);
