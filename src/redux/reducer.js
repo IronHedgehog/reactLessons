@@ -1,8 +1,8 @@
 // reducer
 
-import { createReducer } from "@reduxjs/toolkit";
+// import { createReducer } from "@reduxjs/toolkit";
 
-const taskInitState = [{ id: 1, text: "asdasd", completed: false }];
+// const taskInitState = [{ id: 1, text: "asdasd", completed: false }];
 
 // export const taskReducer = (tasks = taskInitState, action) => {
 //   switch (action.type) {
@@ -29,35 +29,35 @@ const taskInitState = [{ id: 1, text: "asdasd", completed: false }];
 //   }
 // };
 
-export const taskReducer = createReducer(taskInitState, (builder) => {
-  builder.addCase("tasks/addTask", (state, action) => {
-    return [...state, action.payload];
-  });
+// export const taskReducer = createReducer(taskInitState, (builder) => {
+//   builder.addCase("tasks/addTask", (state, action) => {
+//     return [...state, action.payload];
+//   });
 
-  builder.addCase("tasks/deleteTask", (state, action) => {
-    return state.filter((task) => task.id !== action.payload);
-  });
+//   builder.addCase("tasks/deleteTask", (state, action) => {
+//     return state.filter((task) => task.id !== action.payload);
+//   });
 
-  builder.addCase("tasks/toggleCompleted", (state, action) => {
-    return state.map((task) => {
-      if (task.id !== action.payload) {
-        return task;
-      }
-      return {
-        ...task,
-        completed: !task.completed,
-      };
-    });
-  });
-});
+//   builder.addCase("tasks/toggleCompleted", (state, action) => {
+//     return state.map((task) => {
+//       if (task.id !== action.payload) {
+//         return task;
+//       }
+//       return {
+//         ...task,
+//         completed: !task.completed,
+//       };
+//     });
+//   });
+// });
 
-const filterInitState = {
-  status: "all",
-};
+// const filterInitState = {
+//   status: "all",
+// };
 
-export const filterReducer = (state = filterInitState, action) => {
-  return filterInitState;
-};
+// export const filterReducer = (state = filterInitState, action) => {
+//   return filterInitState;
+// };
 
 // const initialState = { value: 0 };
 

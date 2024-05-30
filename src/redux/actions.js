@@ -1,5 +1,4 @@
 // Приймає будь-які дані окрім функції класи.
-import { createAction } from "@reduxjs/toolkit";
 const action = {
   //type -  обовʼязковий
   type: "Action type",
@@ -67,7 +66,7 @@ const action = {
 //     payload: taskId,
 //   };
 // };
-export const statusFilter = createAction("tasks/statusFilter");
+// export const statusFilter = createAction("tasks/statusFilter");
 
 // export const statusFilter = (filterValue) => {
 //   return {
