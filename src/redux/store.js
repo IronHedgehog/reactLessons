@@ -1,30 +1,39 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { applyMiddleware, createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { filterReducer } from "./filterSlice";
-import { taskReducer } from "./slice";
+import thunk from "redux-thunk";
+import { getArticles } from "../services/articlesServices";
+import { rootReducer } from "./reducer";
 
 const persistConfig = {
-  key: "tasks", // ключ за яким зберігається в локал сторедж
-  storage, // підключення до вебсховища(локалсторадж)
-  // blacklist: ["filter"], // відповідає за те що видалити та не додавати в локалсторадж
-  whitelist: ["tasks"], // відповідає з ате які поля зберігати в локалсторадж
+  key: "products",
+  storage,
 };
 
-// Комбінація редюсерів
-const reducer = combineReducers({
-  tasks: taskReducer,
-  filter: filterReducer,
-});
-// налаштування персісту, які поля запамʼятовувати, з яким редюсером працювати
-const persistedReducer = persistReducer(persistConfig, reducer);
-// configureStore - ми з вами створили стор
-export const store = configureStore({
-  reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
-});
+const persistReducerr = persistReducer(persistConfig, rootReducer);
+
+// const middleware = (store) => (next) => (action) => {
+//   console.log(action);
+//   if (typeof action === "function") {
+//     action(store.dispatch);
+//   }
+//   return next(action);
+// };
+
+export const getArticlesThunk = () => async (dispatch) => {
+  dispatch({ type: "setArtclesLoading" });
+  try {
+    const data = await getArticles();
+    dispatch({ type: "setArticlesSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "setArticlesError", payload: error });
+  }
+};
+
+export const store = createStore(
+  persistReducerr,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
 export const persistor = persistStore(store);
