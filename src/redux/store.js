@@ -1,36 +1,29 @@
-import { configureStore } from "@reduxjs/toolkit";
-import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-  REHYDRATE,
-  persistReducer,
-  persistStore,
-} from "redux-persist";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { filterReducer } from "./filterSlice";
 import { taskReducer } from "./slice";
-// Створення загального стору в який ми передали загальний стейт та підключення девтулзів
 
-const taskPersistConfig = {
-  key: "tasks",
-  storage, // підключення до локалстореджу
-  // blacklist: ["filter"], щоб виключити поле (не записувати)
-  whitelist: ["tasks"], //вказуємо тільки те що записувати треба
+const persistConfig = {
+  key: "tasks", // ключ за яким зберігається в локал сторедж
+  storage, // підключення до вебсховища(локалсторадж)
+  // blacklist: ["filter"], // відповідає за те що видалити та не додавати в локалсторадж
+  whitelist: ["tasks"], // відповідає з ате які поля зберігати в локалсторадж
 };
 
+// Комбінація редюсерів
+const reducer = combineReducers({
+  tasks: taskReducer,
+  filter: filterReducer,
+});
+// налаштування персісту, які поля запамʼятовувати, з яким редюсером працювати
+const persistedReducer = persistReducer(persistConfig, reducer);
+// configureStore - ми з вами створили стор
 export const store = configureStore({
-  reducer: {
-    tasks: persistReducer(taskPersistConfig, taskReducer),
-    filter: filterReducer,
-  },
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
+      serializableCheck: false,
     }),
 });
 

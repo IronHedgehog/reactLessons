@@ -1,8 +1,8 @@
 import { Button } from "components/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { filtersValue } from "redux/constants";
-import { toggleFilter } from "redux/filterSlice";
-import { getFilterStatus } from "redux/selectors";
+import { filtersValue } from "../../redux/constants";
+import { toggleFilter } from "../../redux/filterSlice";
+import { getFilterStatus } from "../../redux/selectors";
 import css from "./StatusFilter.module.css";
 
 export const StatusFilter = () => {

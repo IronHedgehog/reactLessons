@@ -1,6 +1,6 @@
 import { Task } from "components/Task/Task";
 import { useSelector } from "react-redux";
-import { filtersValue } from "redux/constants";
+import { filtersValue } from "../../redux/constants";
 import css from "./TaskList.module.css";
 
 const getNeddedTasks = (tasks, filter) => {
