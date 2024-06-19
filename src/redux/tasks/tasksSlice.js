@@ -9,28 +9,30 @@ const initialState = { tasks: [], isLoading: false, error: null };
 const taskSlice = createSlice({
   name: "tasks",
   initialState,
-  reducers: {
-    // Виконуватись в момент старту запиту
-    fetchingTasks(state) {
-      state.isLoading = true;
-    },
-    //  Виконуватись в момент успіху запиту
-    fetchingSuccess(state, { payload }) {
-      state.isLoading = false;
-      state.error = null;
-      state.tasks = payload;
-    },
-    //  Виконуватись в момент помилки запиту
-    fetchingError(state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
-  },
+  // reducers: {
+  //   // Виконуватись в момент старту запиту
+  //   fetchingTasks(state) {
+  //     state.isLoading = true;
+  //   },
+  //   //  Виконуватись в момент успіху запиту
+  //   fetchingSuccess(state, { payload }) {
+  //     state.isLoading = false;
+  //     state.error = null;
+  //     state.tasks = payload;
+  //   },
+  //   //  Виконуватись в момент помилки запиту
+  //   fetchingError(state, action) {
+  //     state.isLoading = false;
+  //     state.error = action.payload;
+  //   },
+  // },
   extraReducers: (builder) => {
     builder.addCase("tasks/fetchAll/pending", (state, action) => {
       state.isLoading = true;
     });
     builder.addCase("tasks/fetchAll/fulfilled", (state, { payload }) => {
+      // payload - змістовне навантаження твого екшену
+      console.log(payload);
       state.isLoading = false;
       state.error = null;
       state.tasks = payload;
@@ -54,7 +56,7 @@ const taskSlice = createSlice({
   },
 });
 
-export const { fetchingTasks, fetchingSuccess, fetchingError } =
-  taskSlice.actions;
+// export const { fetchingTasks, fetchingSuccess, fetchingError } =
+//   taskSlice.actions;
 
 export const taskReducer = taskSlice.reducer;

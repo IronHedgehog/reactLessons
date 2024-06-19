@@ -2,8 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 // https://666b20787013419182d25edb.mockapi.io/api/prefix/:endpoint
 
-axios.defaults.baseURL =
-  "https://666b20787013419182d25edb.mockapi.io/api/prefix/";
+axios.defaults.baseURL = "https://6672fd0a6ca902ae11b2b1ad.mockapi.io/";
 
 // https://666b20787013419182d25edb.mockapi.io/api/prefix/:endpoint
 
@@ -51,3 +50,12 @@ export const deleteTask = createAsyncThunk(
     }
   }
 );
+
+export const addTask = createAsyncThunk("tasks/add", async (_, thunkAPI) => {
+  try {
+    const { data } = await axios.post(`tasks`);
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue("Додавання не вдалось не вдалось");
+  }
+});
