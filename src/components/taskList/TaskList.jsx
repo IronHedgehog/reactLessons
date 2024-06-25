@@ -1,10 +1,11 @@
 // rafce
 
 import { useSelector } from "react-redux";
+import { tasksSelector } from "../../redux/tasks/selectors";
 import TaskItem from "./taskItem/TaskItem";
 
 const TaskList = () => {
-  const { tasks } = useSelector((state) => state.tasks);
+  const tasks = useSelector((state) => tasksSelector(state));
   return (
     <ul>
       {tasks.length > 0 &&
