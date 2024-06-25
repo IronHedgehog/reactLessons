@@ -4,6 +4,9 @@ import s from "./TaskItem.module.css";
 
 const TaskItem = ({ id, completed, text }) => {
   const dispatch = useDispatch();
+  // TODO:
+  // FIXME:
+
   return (
     <li className={s.listItem} id={id}>
       <p className={s.text}>{text}</p>
