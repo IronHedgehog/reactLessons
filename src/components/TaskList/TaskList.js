@@ -1,6 +1,10 @@
 import { Task } from "components/Task/Task";
 import { useSelector } from "react-redux";
-import { neededTask } from "redux/selectors";
+import {
+  completedTasks,
+  getNeededTasks,
+  notCompletedTasks,
+} from "redux/selectors";
 import css from "./TaskList.module.css";
 
 // const getNeddedTasks = (tasks, filter) => {
@@ -22,7 +26,10 @@ export const TaskList = () => {
 
   // const filter = useSelector((state) => state.filter.status);
 
-  const neededTasks = useSelector((state) => neededTask(state));
+  // const neededTasks = useSelector((state) => neededTask(state));
+  const neededTasks = useSelector(getNeededTasks);
+  console.log(neededTasks);
+  // console.log(tasks);
   return (
     <ul className={css.list}>
       {neededTasks?.map((task) => (
