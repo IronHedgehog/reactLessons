@@ -4,8 +4,6 @@ import s from "./TaskItem.module.css";
 
 const TaskItem = ({ id, completed, text }) => {
   const dispatch = useDispatch();
-  // TODO:
-  // FIXME:
 
   return (
     <li className={s.listItem} id={id}>
@@ -17,7 +15,7 @@ const TaskItem = ({ id, completed, text }) => {
       />
       <button
         onClick={(e) => {
-          dispatch(deleteTask(179));
+          dispatch(deleteTask(id));
         }}
         className={s.buttonDelete}
       >
