@@ -1,4 +1,7 @@
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import { AddForm } from "./components/addForm/AddForm";
 import TaskList from "./components/taskList/TaskList";
 import { useFetchTasksQuery } from "./redux/tasks/sliceRTK";
 
@@ -16,12 +19,26 @@ export const App = () => {
   // }, [dispatch]);
 
   return (
-    <div>
-      {isLoading && <p>LOADING....zzzz</p>}
-      {isError && <p>{isError}</p>}
-      {/* {tasks && <TaskList tasks={tasks} />} */}
-      <TaskList tasks={tasks} />
-    </div>
+    <>
+      <div>
+        {isLoading && <p>LOADING....zzzz</p>}
+        {isError && <p>{isError}</p>}
+        <AddForm />
+        {/* {tasks && <TaskList tasks={tasks} />} */}
+        <TaskList tasks={tasks} />
+      </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </>
   );
 };
 
