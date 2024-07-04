@@ -1,9 +1,11 @@
-import { useDispatch } from "react-redux";
-import { deleteTask } from "../../../redux/tasks/operations";
+import { FadeLoader } from "react-spinners";
+import { useDeleteTasksMutation } from "../../../redux/tasks/sliceRTK";
 import s from "./TaskItem.module.css";
 
 const TaskItem = ({ id, completed, text }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  console.log();
+  const [deleteTask, { isLoading }] = useDeleteTasksMutation();
 
   return (
     <li className={s.listItem} id={id}>
@@ -13,13 +15,16 @@ const TaskItem = ({ id, completed, text }) => {
         type="checkbox"
         completed={completed.toString()}
       />
+
       <button
+        disabled={isLoading}
         onClick={(e) => {
-          dispatch(deleteTask(id));
+          deleteTask(id);
+          // dispatch(deleteTask(id));
         }}
         className={s.buttonDelete}
       >
-        Видалити
+        {isLoading ? <FadeLoader height={10} radius={1} width={5} /> : "Delete"}
       </button>
     </li>
   );

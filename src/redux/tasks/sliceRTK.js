@@ -15,7 +15,15 @@ export const tasksAPI = createApi({
       query: () => "tasks",
       providesTags: ["tasks"],
     }),
+
+    deleteTasks: builder.mutation({
+      query: (taskId) => ({
+        url: `tasks/${taskId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["tasks"],
+    }),
   }),
 });
 
-export const { useFetchTasksQuery } = tasksAPI;
+export const { useFetchTasksQuery, useDeleteTasksMutation } = tasksAPI;
