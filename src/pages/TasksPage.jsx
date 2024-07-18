@@ -1,9 +1,9 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AddForm } from "../components/addForm/AddForm";
+import TaskList from "../components/taskList/TaskList";
 import { useFetchTasksQuery } from "../redux/tasks/sliceRTK";
 import "./App.css";
-// import { AddForm } from "./components/addForm/AddForm";
-// import TaskList from "./components/taskList/TaskList";
 // import { useFetchTasksQuery } from "./redux/tasks/sliceRTK";
 
 export const TaskPage = () => {
@@ -25,11 +25,8 @@ export const TaskPage = () => {
         {isLoading && <p>LOADING....zzzz</p>}
         {isError && <p>{isError}</p>}
         <p>asd</p>
-        {/* <AddForm /> */}
-        addForm
-        {/* {tasks && <TaskList tasks={tasks} />} */}
-        {/* <TaskList tasks={tasks} /> */}
-        {/* <TaskList></TaskList> */}
+        <AddForm />
+        {tasks && <TaskList tasks={tasks} />}
       </div>
       <ToastContainer
         position="top-right"
