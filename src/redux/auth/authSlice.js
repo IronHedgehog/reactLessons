@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { signUp } from "./operations";
 
 const initialState = {
   user: { name: null, email: null },
@@ -10,22 +11,12 @@ const userSlice = createSlice({
   name: "users",
   initialState,
   extraReducers: (builder) => {
-    builder.addCase("");
+    builder.addCase(signUp.fulfilled, (state, { payload }) => {
+      state.isLoggedIn = true;
+      state.user = { email: payload.email, name: payload.name };
+      state.token = payload.token;
+    });
   },
 });
 
-// const user = {
-//   userName: "Genii228",
-//   password: "qwerty12345@?",
-//   email: "qwe@gmail.com",
-// };
-
-// const secretKey =
-//   "QWERTYUIOP{}ASDFGHJKKL::|ZXCVBNMM<>?QWEqwueqwpopksd;a123949590708--9-0";
-
-// const jwtToken = generateJWT(secretKey, email);
-
-// // headers
-// //payload (email)
-// // signature
-// console.log("qwjroiqjwiroqjw.asdassdasdasdasdasdasdasd.opretportpoertop");
+export const authReducer = userSlice.reducer;
