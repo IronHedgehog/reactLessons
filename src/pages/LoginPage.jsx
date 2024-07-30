@@ -12,6 +12,8 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import * as React from "react";
+import { useDispatch } from "react-redux";
+import { logIn } from "../redux/auth/operations";
 
 function Copyright(props) {
   return (
@@ -34,13 +36,16 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export function LoginPage() {
+  const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    console.log(data.get("email"));
+    const loginData = {
       email: data.get("email"),
       password: data.get("password"),
-    });
+    };
+    dispatch(logIn(loginData));
   };
 
   return (

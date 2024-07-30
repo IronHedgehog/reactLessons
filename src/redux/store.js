@@ -2,10 +2,17 @@
 // import { taskReducer } from "./tasks/tasksSlice";
 
 import { configureStore } from "@reduxjs/toolkit";
-
 import { setupListeners } from "@reduxjs/toolkit/query";
-import persistReducer from "redux-persist/es/persistReducer";
-import persistStore from "redux-persist/es/persistStore";
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistReducer,
+  persistStore,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { authReducer } from "./auth/authSlice";
 import { tasksAPI } from "./tasks/sliceRTK";
@@ -27,10 +34,19 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     [tasksAPI.reducerPath]: tasksAPI.reducer,
   },
-  middleware: (getDefaultMiddleware) => [
-    ...getDefaultMiddleware(),
-    tasksAPI.middleware,
-  ],
+  // middleware: (getDefaultMiddleware) => [
+  //   ...getDefaultMiddleware(),
+  //   tasksAPI.middleware,
+  // ],
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware(
+      {
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      },
+      [...getDefaultMiddleware()].concat(tasksAPI.middleware)
+    ),
 });
 
 // Слухач події, як тіки відбувається якась подія під яку заточена наша API  буде тригеритись та діспатчити цю подію

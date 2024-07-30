@@ -1,7 +1,9 @@
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
 
 const Header = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <>
       <NavLink to={"/"}>Phonebook</NavLink>
