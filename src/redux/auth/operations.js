@@ -37,3 +37,23 @@ export const logIn = createAsyncThunk(
     }
   }
 );
+
+export const refreshUser = createAsyncThunk(
+  "auth/refresh",
+  async (_, thunkApi) => {
+    const state = thunkApi.getState();
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      return thunkApi.rejectWithValue("login another one");
+    }
+    try {
+      // "/users/me"
+      setAuthHeader(persistedToken);
+      const { data } = await axios.get("/users");
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
