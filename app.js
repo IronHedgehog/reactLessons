@@ -1,5 +1,5 @@
 var input1 = document.getElementById("number1");
-// const input1 = document.getElementById("number1")! as HTMLDivElement;
+// const input1 = document.getElementById("number1")! as HTMLInputElement;
 var input2 = document.getElementById("number2");
 // ! - "Я програміст, я програмував цей код, Я ТОЧНО ВПЕВНЕНИЙ, ЩО ЦЯ КНОПКА БУДЕ ТУТ"
 var button = document.getElementById("submit");
@@ -76,4 +76,50 @@ var data = {
     desc: "nice potato",
 };
 // ТИПИ ЯКИХ НЕМА В JS
-// tuple,custom types,never,void,unknowns,Enum,
+// tuple,custom types,never,void,unknowns,Enum,any
+// ANY - будь-який тип
+// Намагаємось уникати!
+// any - зміна в яку ми можемо скласти будь-що (Порівняння з JS)
+var any;
+any = 10;
+any = "false";
+any = "funny";
+any = false;
+any = [];
+any = {};
+var some;
+some = [];
+var number34;
+num = some;
+// UNKNOWN
+// Any  з додатковою перевіркою
+var some1;
+some1 = "asd";
+var string12 = "asd";
+if (typeof some1 === "string") {
+    string12 = some1;
+}
+// Tuple - кортеж
+//Фіксує розмір
+// Фіксує типи
+var fixed;
+fixed = ["asd", 1];
+// fixed = [1, "asd"];
+fixed.push("false", 0, 10, "50", "100000", "asd");
+console.log(fixed);
+// ENUM
+// Паттерн
+// Настільки популярний,що під нього створили у TS окремий тип даних
+// Всі значення які ви пишете в ENUM прирівнюються до числових значень починаючи з 0
+var Roles;
+(function (Roles) {
+    // Гарним тоном є прописувати змінну в ENUM великими буквами
+    Roles[Roles["ADMIN"] = 0] = "ADMIN";
+    Roles[Roles["USER"] = 1] = "USER";
+})(Roles || (Roles = {}));
+var person1 = {
+    role: Roles.ADMIN,
+};
+if (person1.role === Roles.ADMIN) {
+    console.log("role :", Roles.ADMIN);
+}

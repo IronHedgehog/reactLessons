@@ -1,5 +1,5 @@
 const input1 = document.getElementById("number1")! as HTMLInputElement;
-// const input1 = document.getElementById("number1")! as HTMLDivElement;
+// const input1 = document.getElementById("number1")! as HTMLInputElement;
 const input2 = document.getElementById("number2")! as HTMLInputElement;
 // ! - "Я програміст, я програмував цей код, Я ТОЧНО ВПЕВНЕНИЙ, ЩО ЦЯ КНОПКА БУДЕ ТУТ"
 const button = document.getElementById("submit")! as HTMLButtonElement;
@@ -95,4 +95,75 @@ const data: { id: number; price: number; title: string; desc: string } = {
 
 // ТИПИ ЯКИХ НЕМА В JS
 
-// tuple,custom types,never,void,unknowns,Enum,
+// tuple,custom types,never,void,unknowns,Enum,any
+
+// ANY - будь-який тип
+// Намагаємось уникати!
+// any - зміна в яку ми можемо скласти будь-що (Порівняння з JS)
+
+let any: any;
+
+any = 10;
+
+any = "false";
+
+any = "funny";
+
+any = false;
+
+any = [];
+
+any = {};
+
+let some: any;
+
+some = [];
+
+let number34: number;
+
+num = some;
+
+// UNKNOWN
+// Any  з додатковою перевіркою
+
+let some1: unknown;
+
+some1 = "asd";
+
+let string12 = "asd";
+
+if (typeof some1 === "string") {
+  string12 = some1;
+}
+
+// Tuple - кортеж
+//Фіксує розмір
+// Фіксує типи
+
+let fixed: [string, number];
+
+fixed = ["asd", 1];
+// fixed = [1, "asd"];
+
+fixed.push("false", 0, 10, "50", "100000", "asd");
+
+console.log(fixed);
+
+// ENUM
+// Паттерн
+// Настільки популярний,що під нього створили у TS окремий тип даних
+
+// Всі значення які ви пишете в ENUM прирівнюються до числових значень починаючи з 0
+enum Roles {
+  // Гарним тоном є прописувати змінну в ENUM великими буквами
+  ADMIN,
+  USER,
+}
+
+const person1 = {
+  role: Roles.ADMIN,
+};
+
+if (person1.role === Roles.ADMIN) {
+  console.log("role :", Roles.ADMIN);
+}
