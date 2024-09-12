@@ -12,3 +12,18 @@ console.log(5 + 5); // додавання чисел
 // typeScript - розширення для js з суворою типізацією(надання типу кожнії зміннії)
 
 // TS - сповільнює час розробки
+
+// ВСІ ЛОГІЧНІ ОПЕРАТОРИ ЛІНИВІ
+
+// &&
+// &
+// ||
+// |
+
+const a = true;
+const b = false;
+
+console.log(b || a);
+console.log(a | b);
+console.log(a && b);
+console.log(b & a);
