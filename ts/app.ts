@@ -1,131 +1,169 @@
-var input1 = document.getElementById("number1");
+const input1 = document.getElementById("number1")! as HTMLInputElement;
 // const input1 = document.getElementById("number1")! as HTMLInputElement;
-var input2 = document.getElementById("number2");
+const input2 = document.getElementById("number2")! as HTMLInputElement;
 // ! - "Я програміст, я програмував цей код, Я ТОЧНО ВПЕВНЕНИЙ, ЩО ЦЯ КНОПКА БУДЕ ТУТ"
-var button = document.getElementById("submit");
-function add(num1, num2) {
+const button = document.getElementById("submit")! as HTMLButtonElement;
+
+function add(num1: number, num2: number): number {
   return num1 + num2;
 }
+
 // if (button) {
 //   button.addEventListener("click", () => {});
 // }
 // ? - запитання до ts чи є дійсно кнопка? Якщо нема то не виконуй код далі
 // button?.addEventListener("click", () => {});
-var getSum = function (number1, number2) {
+
+const getSum = (number1: number, number2: number) => {
   return number1 + number2;
 };
-button.addEventListener("click", function () {
+
+button.addEventListener("click", () => {
   console.log(getSum(Number(input1.value), +input2.value));
   //   console.log(input1.value + input2.value);
 });
 // ПРОСТІ(СКАЛЯРНІ) - це прості типи які містять у собі одне значення
 // string, number, boolean, null,undefined,bigInt,symbol
+
 // const - ніколи не змінюється
 // let - let змінюється, ми можемо його переписувати
-var number = 10;
+const number = 10;
+
 // let number4 = 0;
-var number4;
-var number2 = 1.5;
-var number3 = -5;
-var num;
-var string;
-var boolean;
-var empty;
-var undef;
+let number4: number;
+
+const number2 = 1.5;
+
+const number3 = -5;
+
+let num: number;
+let string: string;
+let boolean: boolean;
+let empty: null;
+let undef: undefined;
+
 num = 10;
 string = "string";
 boolean = true;
 empty = null;
 undef = undefined;
 // якщо присвоюєте явно то можна не вказувати тип
-var num1 = 10;
-var str = "asd";
-var bool = false;
-function func(num, str, bool, empty) {
-  if (num === void 0) {
-    num = 100;
-  }
-  if (str === void 0) {
-    str = "something";
-  }
-  if (bool === void 0) {
-    bool = false;
-  }
-}
+const num1 = 10;
+const str = "asd";
+const bool = false;
+
+function func(num = 100, str = "something", bool = false, empty: null) {}
+
 // СКЛАДНІ ТИПИ
 // OBJECT
 // : string[] - ми очікуємо побачити у змінній arrString масив строк
-var arrString;
+// let arrString: string[];
+
 arrString = ["hello", "world"];
-var numberArr;
+
+let numberArr: number[];
 numberArr = [1, 2];
-var anyArr;
+
+let anyArr: any[];
+
 anyArr = [1, undefined, null, "str"];
-var arrObj;
+
+let arrObj: { name: string; age: number }[];
+
 arrObj = [
   { name: "Petro", age: 30 },
   // { num1: 1, ega: 33 },//ERR
 ];
+
 // OBJECT
-var obj = {};
+
+const obj = {};
 // Приклад нище не пропустить лінтер
 // const obj1: {} = {};
 // ? - оператор який робить поле не обовʼязковим
-var person = {
+const person: { name: string; age: number; email?: string } = {
   name: "Petro",
   age: 30,
 };
-var data = {
+
+const data: { id: number; price: number; title: string; desc: string } = {
   id: 1,
   price: 1000,
   title: "Potato",
   desc: "nice potato",
 };
+
 // ТИПИ ЯКИХ НЕМА В JS
+
 // tuple,custom types,never,void,unknowns,Enum,any
+
 // ANY - будь-який тип
 // Намагаємось уникати!
 // any - зміна в яку ми можемо скласти будь-що (Порівняння з JS)
-var any;
+
+let any: any;
+
 any = 10;
+
 any = "false";
+
 any = "funny";
+
 any = false;
+
 any = [];
+
 any = {};
-var some;
+
+let some: any;
+
 some = [];
-var number34;
+
+let number34: number;
+
 num = some;
+
 // UNKNOWN
 // Any  з додатковою перевіркою
-var some1;
+
+let some1: unknown;
+
 some1 = "asd";
-var string12 = "asd";
+
+let string12 = "asd";
+
 if (typeof some1 === "string") {
   string12 = some1;
 }
+
 // Tuple - кортеж
 //Фіксує розмір
 // Фіксує типи
-var fixed;
+
+let fixed: [string, number];
+
 fixed = ["asd", 1];
 // fixed = [1, "asd"];
+
 fixed.push("false", 0, 10, "50", "100000", "asd");
+
 console.log(fixed);
+
 // ENUM
 // Паттерн
 // Настільки популярний,що під нього створили у TS окремий тип даних
+
 // Всі значення які ви пишете в ENUM прирівнюються до числових значень починаючи з 0
-var Roles;
-(function (Roles) {
+enum Roles {
   // Гарним тоном є прописувати змінну в ENUM великими буквами
-  Roles[(Roles["ADMIN"] = 0)] = "ADMIN";
-  Roles[(Roles["USER"] = 1)] = "USER";
-})(Roles || (Roles = {}));
-var person1 = {
+  ADMIN,
+  USER,
+}
+
+const person1 = {
   role: Roles.ADMIN,
 };
+
 if (person1.role === Roles.ADMIN) {
   console.log("role :", Roles.ADMIN);
 }

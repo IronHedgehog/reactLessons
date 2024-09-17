@@ -64,7 +64,55 @@ function createError(message: string, status: number): never {
   throw { message, status };
 }
 
-createError("error", 400);
+// createError("error", 400);
 
 //налаштуєм компілятор
 // працювати з класами
+
+// void - використовується в тому випадку якщо ми хочемо позначити відсутність будь-якого типу
+
+// функція з типом повернення void може повертати undefined або не мати оператора return
+// змінні типу void можуть містити лише null та undefined без додаткових налаштувань
+// (strictNullChecks)
+function logger(message: string): void {
+  // clg - не має жодного типу
+  console.log(message);
+}
+
+function sum(num1: number, num2: number) {
+  // Данна функція нічого не повертає тому ретурн тайп буде void
+  let sum = num1 + num2;
+}
+
+logger("asd");
+sum(2, 2);
+
+let nothing: void = null;
+
+// NEVER
+
+// never - представляє тип значень, які ніколи не відбуваються.
+
+// 1) функції які видають помилки
+
+function throwErr(message: string): never {
+  throw new Error(message);
+}
+
+function infiniteLoop(): never {
+  while (true) {}
+}
+
+throwErr("asdasd");
+
+function doNothing(): void {
+  return;
+}
+
+function failAlways(): never {
+  throw new Error("This func always fails");
+}
+
+// never - підтип кожного типу(дуже специфічний тип даних)
+
+// жоден тип не є підтипом never
