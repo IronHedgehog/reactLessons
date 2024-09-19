@@ -1,173 +1,72 @@
-const input1 = document.getElementById("number1")! as HTMLInputElement;
-// const input1 = document.getElementById("number1")! as HTMLInputElement;
-const input2 = document.getElementById("number2")! as HTMLInputElement;
-// ! - "Я програміст, я програмував цей код, Я ТОЧНО ВПЕВНЕНИЙ, ЩО ЦЯ КНОПКА БУДЕ ТУТ"
-const button = document.getElementById("submit")! as HTMLButtonElement;
+// поліМорфізм - полі - багато, Морф - форма
 
-const a10 = 10;
+class Character {
+  firstName: string;
+  lastName: string;
+  private _age: number;
+  public get age(): number {
+    return this._age;
+  }
+  public set age(value: number) {
+    this._age = value;
+  }
+  constructor(firstName: string, lastName: string, age: number) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this._age = age;
+  }
 
-function add(num1: number, num2: number, num3?: number): number {
-  return num1 + num2;
+  protected get getAge(): number {
+    return this._age;
+  }
+  protected set setAge(newAge: number) {
+    this._age = newAge;
+  }
+
+  get fullName(): string {
+    return this.firstName + " " + this.lastName;
+  }
+
+  set name(newFirstName: string) {
+    this.firstName = newFirstName;
+  }
+
+  set lasttName(newLastName: string) {
+    this.lastName = newLastName;
+  }
+
+  damage() {
+    console.log("Стукнув на 0 демеджу");
+  }
 }
 
-// add(1, 2);
+class Hero extends Character {
+  superPower: string;
+  constructor(
+    firstName: string,
+    lastName: string,
+    age: number,
+    superPower: string = "FireBoll"
+  ) {
+    //   Спосіб застосувати батьківський конструктор
+    super(firstName, lastName, age);
+    this.superPower = superPower;
+  }
 
-// if (button) {
-//   button.addEventListener("click", () => {});
-// }
-// ? - запитання до ts чи є дійсно кнопка? Якщо нема то не виконуй код далі
-// button?.addEventListener("click", () => {});
-
-const getSumm = (number1: number, number2: number) => {
-  return number1 + number2;
-};
-
-button.addEventListener("click", () => {
-  console.log(getSum(Number(input1.value), +input2.value));
-  //   console.log(input1.value + input2.value);
-});
-// ПРОСТІ(СКАЛЯРНІ) - це прості типи які містять у собі одне значення
-// string, number, boolean, null,undefined,bigInt,symbol
-
-// const - ніколи не змінюється
-// let - let змінюється, ми можемо його переписувати
-const numberr = 10;
-
-// let number4 = 0;
-let number4: number;
-
-const number2 = 1.5;
-
-const number3 = -5;
-
-let num: number;
-let stringg: string;
-let boolean: boolean;
-let empty: null;
-let undef: undefined;
-
-num = 10;
-stringg = "string";
-boolean = true;
-empty = null;
-undef = undefined;
-// якщо присвоюєте явно то можна не вказувати тип
-const num1 = 10;
-const str = "asd";
-const bool = false;
-
-function func(num = 100, str = "something", bool = false, empty: null) {}
-
-// СКЛАДНІ ТИПИ
-// OBJECT
-// : string[] - ми очікуємо побачити у змінній arrString масив строк
-// let arrString: string[];
-
-arrString = ["hello", "world"];
-
-let numberArr: number[];
-numberArr = [1, 2];
-
-let anyArr: any[];
-
-anyArr = [1, undefined, null, "str"];
-
-let arrObj: { name: string; age: number }[];
-
-arrObj = [
-  { name: "Petro", age: 30 },
-  // { num1: 1, ega: 33 },//ERR
-];
-
-// OBJECT
-
-const obj = {};
-// Приклад нище не пропустить лінтер
-// const obj1: {} = {};
-// ? - оператор який робить поле не обовʼязковим
-const person: { name: string; age: number; email?: string } = {
-  name: "Petro",
-  age: 30,
-};
-
-const data: { id: number; price: number; title: string; desc: string } = {
-  id: 1,
-  price: 1000,
-  title: "Potato",
-  desc: "nice potato",
-};
-
-// ТИПИ ЯКИХ НЕМА В JS
-
-// tuple,custom types,never,void,unknowns,Enum,any
-
-// ANY - будь-який тип
-// Намагаємось уникати!
-// any - зміна в яку ми можемо скласти будь-що (Порівняння з JS)
-
-let any: any;
-
-any = 10;
-
-any = "false";
-
-any = "funny";
-
-any = false;
-
-any = [];
-
-any = {};
-
-let some: any;
-
-some = [];
-
-let number34: number;
-
-num = some;
-
-// UNKNOWN
-// Any  з додатковою перевіркою
-
-let some1: unknown;
-
-some1 = "asd";
-
-let string12 = "asd";
-
-if (typeof some1 === "string") {
-  string12 = some1;
+  public get age(): number {
+    return this.getAge;
+  }
+  //   public set setAge(newAge: number) {
+  //     this.age = newAge;
+  //   }
+  damage(): void {
+    console.log("Стукаю на 1 демедж ");
+  }
 }
 
-// Tuple - кортеж
-//Фіксує розмір
-// Фіксує типи
+const Petro = new Character("Petro", "Petrovich", 40);
 
-let fixed: [string, number];
+const heroPetro = new Hero("Petro", "Petrovich", 40);
+// Petro.getAge();
 
-fixed = ["asd", 1];
-// fixed = [1, "asd"];
-
-fixed.push("false", 0, 10, "50", "100000", "asd");
-
-console.log(fixed);
-
-// ENUM
-// Паттерн
-// Настільки популярний,що під нього створили у TS окремий тип даних
-
-// Всі значення які ви пишете в ENUM прирівнюються до числових значень починаючи з 0
-enum Roles {
-  // Гарним тоном є прописувати змінну в ENUM великими буквами
-  ADMIN,
-  USER,
-}
-
-const person1 = {
-  role: Roles.ADMIN,
-};
-
-if (person1.role === Roles.ADMIN) {
-  console.log("role :", Roles.ADMIN);
-}
+console.log(heroPetro.age);
