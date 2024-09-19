@@ -4,9 +4,13 @@ const input2 = document.getElementById("number2")! as HTMLInputElement;
 // ! - "Я програміст, я програмував цей код, Я ТОЧНО ВПЕВНЕНИЙ, ЩО ЦЯ КНОПКА БУДЕ ТУТ"
 const button = document.getElementById("submit")! as HTMLButtonElement;
 
-function add(num1: number, num2: number): number {
+const a10 = 10;
+
+function add(num1: number, num2: number, num3?: number): number {
   return num1 + num2;
 }
+
+// add(1, 2);
 
 // if (button) {
 //   button.addEventListener("click", () => {});
@@ -14,7 +18,7 @@ function add(num1: number, num2: number): number {
 // ? - запитання до ts чи є дійсно кнопка? Якщо нема то не виконуй код далі
 // button?.addEventListener("click", () => {});
 
-const getSum = (number1: number, number2: number) => {
+const getSumm = (number1: number, number2: number) => {
   return number1 + number2;
 };
 
@@ -27,7 +31,7 @@ button.addEventListener("click", () => {
 
 // const - ніколи не змінюється
 // let - let змінюється, ми можемо його переписувати
-const number = 10;
+const numberr = 10;
 
 // let number4 = 0;
 let number4: number;
@@ -37,13 +41,13 @@ const number2 = 1.5;
 const number3 = -5;
 
 let num: number;
-let string: string;
+let stringg: string;
 let boolean: boolean;
 let empty: null;
 let undef: undefined;
 
 num = 10;
-string = "string";
+stringg = "string";
 boolean = true;
 empty = null;
 undef = undefined;

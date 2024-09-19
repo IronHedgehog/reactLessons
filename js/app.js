@@ -2,26 +2,27 @@
 const input1 = document.getElementById("number1");
 const input2 = document.getElementById("number2");
 const button = document.getElementById("submit");
-function add(num1, num2) {
+const a10 = 10;
+function add(num1, num2, num3) {
     return num1 + num2;
 }
-const getSum = (number1, number2) => {
+const getSumm = (number1, number2) => {
     return number1 + number2;
 };
 button.addEventListener("click", () => {
     console.log(getSum(Number(input1.value), +input2.value));
 });
-const number = 10;
+const numberr = 10;
 let number4;
 const number2 = 1.5;
 const number3 = -5;
 let num;
-let string;
+let stringg;
 let boolean;
 let empty;
 let undef;
 num = 10;
-string = "string";
+stringg = "string";
 boolean = true;
 empty = null;
 undef = undefined;
